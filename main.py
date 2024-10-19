@@ -23,7 +23,7 @@ def main():
 	int_series=mfdfa.int_series(bmag)
 	reverse_int_series = list(reversed(int_series))
 
-	np.savetxt('data/Yfunc_values.csv',(np.array(int_series)),delimiter=',')
+#	np.savetxt('data/Yfunc_values.csv',(np.array(int_series)),delimiter=',')
 	print("Done integrating...")
 		
 	print("Segmenting")
