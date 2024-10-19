@@ -1,29 +1,15 @@
-#This module contains functions useful for performing MF-DFA
+#This module contains functions useful for performing MF-DFA analysis on 
+#solar weather data as described in: https://academic.oup.com/mnras/article/519/3/3623/6881729?login=false
 import numpy as np 
-import scipy as sci
 
 #####################################################################
 
-#This function performs the integration in
-#https://academic.oup.com/mnras/article/519/3/3623/6881729?login=false 
-#Section 2 "MF-DFA":
-#ITS stands for "integrate time series"
-def its(time_series,i,mean):
-	Y=0
-	for k in range(i):
-		#Construct the Y(i) function
-		Y+=(time_series[k]-mean)
-	return Y
-
-#####################################################################
-
-#This function creates a list of the integrated values of Y(i):
+#This function integrates the time series and creates the Y(i) function:
 def int_series(time_series):
 #	series=[]
 #	average_b=mean=np.mean(time_series)
 #	for i in range(0,len(time_series)):
 #		series.append(its(time_series,i,average_b))
-
 	#Evaluate the cumulative sum:
 	tot_series=np.cumsum(time_series)
 	#Find the average B field value at this point:
@@ -34,9 +20,9 @@ def int_series(time_series):
 	for i in range(len(tot_series)):
 		integ_series.append(tot_series[i]-avg_B)
 	return integ_series
+
 #Now we need to divide the integrated series into N_s=int(N/s) segments of equal
 #length s.
-
 ######################################################################
 
 #This function separates integrated time series values into segments:
