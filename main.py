@@ -26,7 +26,7 @@ def main():
 #	np.savetxt('data/Yfunc_values.csv',(np.array(int_series)),delimiter=',')
 	print("Done integrating...")
 		
-	print("Segmenting")
+	print("Segmenting...")
 	#Segment the integrated series:
 	s=4
 	seg_series=mfdfa.int_segments(int_series,s)
@@ -39,11 +39,12 @@ def main():
 	#Concatenate the entire list of both the reversed segments and the
 	#non-reversed segments:
 	segment_list = seg_series + reverse_seg_series
+	print("Constructing polynomial fits...")
 	#fit the series to a n degree plynomial:
 	n=3
 	#this function returns the coefficients of the polynomial:
 	fitList=mfdfa.poly_fit(segment_list,n,s)
-
+	print(f"Polynomial fits: {fitList}")
 	#Now we construct the polynomial values for a given value i	
 	#WIP
 	print("Finished!")

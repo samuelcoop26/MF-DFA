@@ -9,6 +9,7 @@ The following Python libraries must be installed: numpy, and pyspedas
 
 
 **How to run with MMS1 FGM data:**
+
 This library currently contains a function to run an MF-DFA analysis
 on MMS1 FGM data. This is the main function used to perform the entire
 analysis. This can be run as such:
@@ -17,13 +18,13 @@ analysis. This can be run as such:
 python3 main.py
 ```
 
-**List of functions**
+**List of functions:**
+
 Here is a list of functions that perform the MF-DFA analysis.
 These are contained in the file called *mfdfa_lib.py* in the source folder.
 
 
 ***mfdfa_lib.int_series()***
-
 This function returns the integrated time series of an input time series.
 
 
