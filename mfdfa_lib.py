@@ -88,16 +88,28 @@ def polyFunc(coeff,deg,i):
 
 #Calculate the variance for a given segment index, v and side length, s:
 
-def variance(s,v,integ_series,poly_list, Ns):
-	N=len(integ_series)
-	var=0
-	#For each element in the segment, find the polynomial fit,
-	#then calculate the variance from the Gomes article, in the MF-DFA
-	#section, part 3.
-	for i in range(1,s):
-		#Extract the value of the polynomial
-		polyFit=polyFunc(poly_list,3,i)
-		#Calculate the variance:
-		var=var + (integseries[N-(v-1)*s+i]-polyFit)^2
-	return (1/s)*var
+def variance(segSeries,polyCoeff,s,m,Ns,N):
 
+	#This function calculates the variance as shown in 2.iii of the Gomes paper
+	#
+	# Here I am taking the 2Ns length from the paper and defining it as Ns
+	varianceList=[]
+	varianceElement=0
+	Ns=len(segSeries)
+	for v in range(Ns):
+		varianceElement=0
+		if v<= Ns:
+			for i in range(s):
+				segIndex=(v-1)*s+i
+				print(segIndex)
+				#varianceElement=(segSeries[(v-1)*s+i-1]-polyFunc(polyCoeff[v],m,i))**2
+		v+=s
+			#varianceList.append(varianceElement) 
+
+	#return varianceList
+"""
+		elif v> Ns:
+			for i in range(s):
+				varianceElement=(segSeries[N-(v-Ns)*s+i]-polyFunc(polyCoeff[v],m,i))**2+varianceElement
+			varianceList.append(varianceElement)
+"""

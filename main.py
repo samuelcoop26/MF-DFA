@@ -29,24 +29,32 @@ def main():
 	print("Segmenting...")
 	#Segment the integrated series:
 	s=4
-	seg_series=mfdfa.int_segments(int_series,s)
-
+	print(len(int_series))
 	#Now reverse the series to include points that are left out of the last
 	#paritition of the integrated time series:
 	#This gives us 2N_s total points to apply a polynomial fit.
+	seg_series=mfdfa.int_segments(int_series,s)
 	reverse_seg_series=mfdfa.int_segments(reverse_int_series,s)
-
+	print(len(seg_series))
+	print(len(reverse_seg_series))
 	#Concatenate the entire list of both the reversed segments and the
 	#non-reversed segments:
 	segment_list = seg_series + reverse_seg_series
+	print(len(segment_list))
 	print("Constructing polynomial fits...")
 	#fit the series to a n degree plynomial:
 	n=3
 	#this function returns the coefficients of the polynomial:
 	fitList=mfdfa.poly_fit(segment_list,n,s)
-	print(f"Polynomial fits: {fitList}")
+	#print(f"Polynomial fits: {fitList}")
 	#Now we construct the polynomial values for a given value i	
 	#WIP
+	Ns=len(seg_series)
+	print(f"Ns=, {Ns}")
+	print(len(segment_list))
+	print(mfdfa.variance(int_series,fitList,s,n,Ns,len(seg_series)))
 	print("Finished!")
+
+	
 
 main()
