@@ -86,6 +86,7 @@ def renyi_exponents(bmag,lag,qlist,order):
 	plt.xlabel('$q$')
 	plt.ylabel(r'$\tau(q)$')
 	plt.xlim(-20,20)
+	plt.ylim(-40,40)
 	plt.show()
 	
 	
